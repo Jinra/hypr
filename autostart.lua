@@ -1,0 +1,6 @@
+hl.on("hyprland.start", function ()
+    -- hl.exec_cmd("uwsm app -- /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1")
+    hl.exec_cmd("uwsm app -- qs -c noctalia-shell")
+    hl.exec_cmd("uwsm app -- wl-clip-persist --clipboard regular")
+    hl.exec_cmd("xhost +SI:localuser:root")
+end)
