@@ -1,3 +1,4 @@
+-- hypr globals
 terminal    = "kitty"
 fileManager = "dolphin"
 menu        = "rofi"

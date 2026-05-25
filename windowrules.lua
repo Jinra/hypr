@@ -44,11 +44,6 @@ hl.window_rule({ match = { class = "^(Vtk)$" }, center = true })
 hl.window_rule({ match = { class = "^(org.gnome.Calculator)$" }, float = true, size = "380 616" })
 hl.window_rule({ match = { class = "^(org.kde.keditfiletype)$" }, float = true })
 hl.window_rule({ match = { class = "^(.*satty.*)$" }, min_size = "850 450", float = true })
-
--- Browser / Media Opacity
-hl.window_rule({ match = { class = "^(firefox|zen)$" }, opacity = "1.0 override 0.90 override" })
-hl.window_rule({ match = { class = "^(mpv|org.kde.haruna|.*plex.*)$" }, opacity = "1.0 override"})
-
 hl.window_rule({
     match = { class = "^(org.kde.dolphin)$" },
     float = true,
@@ -62,9 +57,14 @@ hl.window_rule({
     size = "1300 800",
 })
 
--- Floating Utility Windows
+-- Opacity Overrides
+hl.window_rule({ match = { class = "^(firefox|zen)$" }, opacity = "1.0 override" })
+hl.window_rule({ match = { class = "^(kitty)$" }, opacity = "1.0 override 0.90 override" })
+hl.window_rule({ match = { class = "^(mpv|org.kde.haruna|.*plex.*|org\\.kde\\.gwenview)$" }, opacity = "1.0 override" })
+
+-- Float Utility Windows
 local floatApps = {
-    { class = "^(kitty)$", title = "^(top|btop|htop)$" },
+    { class = "^(kitty)$", title = "^(top|btop|htop)$" }, -- this doesn't work due to title being instantiated as kitty
     { class = "^(kvantummanager|qt5ct|qt6ct|nwg-look)$" },
     { class = "^(org.pulseaudio.pavucontrol|blueman-manager|nm-applet|nm-connection-editor)$" },
     { title = "^(Winetricks.*|Protontricks.*)$" },
@@ -74,7 +74,7 @@ for _, m in ipairs(floatApps) do hl.window_rule({ match = m, float = true }) end
 hl.window_rule({ match = { class = "^(org.kde.ark)$" }, size = "(monitor_w*0.40) (monitor_h*0.40)" })
 hl.window_rule({ match = { float = true }, move = "50% 50%" })
 
--- Common Modals
+-- Float Common Modals
 local modalMatches = {
     { title = "^(Open|Authentication Required|Add Folder to Workspace|Choose Files|Save As|Confirm to replace files|File Operation Progress)$" },
     { initial_title = "^(Open File)$" },
@@ -82,6 +82,7 @@ local modalMatches = {
     { title = "^(File Upload|Choose wallpaper|Library)(.*)$" },
     { class = "^(.*dialog.*)$" },
     { title = "^(.*dialog.*)$" },
+    { class = "^(hyprland-share-picker)$"},
 }
 for _, m in ipairs(modalMatches) do hl.window_rule({ match = m, float = true }) end
 
