@@ -1,6 +1,5 @@
 hl.on("hyprland.start", function ()
-    hl.exec_cmd("dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP DISPLAY")
-    hl.exec_cmd("uwsm app -- qs -c noctalia-shell")
-    hl.exec_cmd("uwsm app -- wl-clip-persist --clipboard regular")
+    hl.exec_cmd("qs -c noctalia-shell")
+    hl.exec_cmd("wl-clip-persist --clipboard regular")
     hl.exec_cmd("xhost +SI:localuser:root")
 end)
