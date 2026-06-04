@@ -14,15 +14,14 @@ hl.window_rule({ match = { class = "^(steam_app.*|gamescope)$" }, workspace = 2 
 
 hl.window_rule({
     match = {
-        class         = "^(steam_app.*)$|^(gamescope)$",
+        class         = "^(steam_app.*|gamescope)$",
         title         = "^(.+)$",
         initial_title = "negative:^(.*\\\\home\\\\.*)$",
     },
-    size       = "2560 1440",
+    size       = "monitor_w monitor_h",
     fullscreen = true,
     content    = "game",
 })
-
 hl.window_rule({
     match = {
         class         = "^(steam_app.*)$",
@@ -33,7 +32,6 @@ hl.window_rule({
     fullscreen       = false,
     fullscreen_state = 0,
 })
-
 hl.window_rule({ match = { class = "^(steam)$", title = "^(Friends List)$" }, float = true })
 
 -- Apps
@@ -44,16 +42,14 @@ hl.window_rule({ match = { class = "^(Vtk)$" }, center = true })
 hl.window_rule({ match = { class = "^(org.gnome.Calculator)$" }, float = true, size = "380 616" })
 hl.window_rule({ match = { class = "^(org.kde.keditfiletype)$" }, float = true })
 hl.window_rule({ match = { class = "^(.*satty.*)$" }, min_size = "850 450", float = true })
-hl.window_rule({
-    match = { class = "^(org.kde.dolphin)$" },
-    float = true,
-    move  = "(cursor_x-(window_w*0.5)) (cursor_y-(window_h*0.05))",
-})
+hl.window_rule({ match = { class = "^(org.kde.ark)$" }, float = true, size = "(monitor_w*0.40) (monitor_h*0.40)" })
 hl.window_rule({
     match = {
         class = "^(org.kde.dolphin)$",
         title = "negative:^(Moving.*|Create New.*|Extract.*|Compress.*|Copying.*|Progress.*|Configure.*|Properties.*|Choose\\sApplication.*)$",
     },
+    float = true,
+    move  = "(cursor_x-(window_w*0.5)) (cursor_y-(window_h*0.05))",
     size = "1300 800",
 })
 
@@ -71,8 +67,7 @@ local floatApps = {
 }
 for _, m in ipairs(floatApps) do hl.window_rule({ match = m, float = true }) end
 
-hl.window_rule({ match = { class = "^(org.kde.ark)$" }, size = "(monitor_w*0.40) (monitor_h*0.40)" })
-hl.window_rule({ match = { float = true }, move = "50% 50%" })
+-- hl.window_rule({ match = { float = true }, move = "50% 50%" })
 
 -- Float Common Modals
 local modalMatches = {
@@ -87,13 +82,11 @@ local modalMatches = {
 for _, m in ipairs(modalMatches) do hl.window_rule({ match = m, float = true }) end
 
 -- Ignore maximize requests from all apps. You'll probably like this.
-local suppressMaximizeRule = hl.window_rule({
+hl.window_rule({
     name  = "suppress-maximize-events",
     match = { class = ".*" },
-
     suppress_event = "maximize",
 })
--- suppressMaximizeRule:set_enabled(false)
 
 -- Fix some dragging issues with XWayland
 hl.window_rule({
@@ -106,6 +99,5 @@ hl.window_rule({
         fullscreen = false,
         pin        = false,
     },
-
     no_focus = true,
 })

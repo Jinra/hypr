@@ -22,10 +22,12 @@ hl.bind(mainMod .. " + Down",  hl.dsp.focus({ direction = "down" }))
 hl.bind("ALT + Tab",           hl.dsp.window.cycle_next())
 
 -- Move active window around current workspace
-hl.bind(mainMod .. " + SHIFT + Right", hl.dsp.window.move({ direction = "r" }))
-hl.bind(mainMod .. " + SHIFT + Left",  hl.dsp.window.move({ direction = "l" }))
-hl.bind(mainMod .. " + SHIFT + Up",    hl.dsp.window.move({ direction = "u" }))
-hl.bind(mainMod .. " + SHIFT + Down",  hl.dsp.window.move({ direction = "d" }))
+hl.bind(mainMod .. " + SHIFT + Right",           hl.dsp.window.move({ direction = "r" }))
+hl.bind(mainMod .. " + SHIFT + Left",            hl.dsp.window.move({ direction = "l" }))
+hl.bind(mainMod .. " + SHIFT + Up",              hl.dsp.window.move({ direction = "u" }))
+hl.bind(mainMod .. " + SHIFT + Down",            hl.dsp.window.move({ direction = "d" }))
+hl.bind(mainMod .. " + CONTROL + SHIFT + Right", hl.dsp.window.move({ workspace = "r+1" }))
+hl.bind(mainMod .. " + CONTROL + SHIFT + Left",  hl.dsp.window.move({ workspace = "r-1" }))
 
 -- Move & Resize with mouse
 hl.bind(mainMod .. " + mouse:272", hl.dsp.window.drag())
@@ -35,11 +37,11 @@ hl.bind(mainMod .. " + mouse:273", hl.dsp.window.resize())
 ---- LAUNCHER ----
 ------------------
 
-hl.bind(mainMod .. " + Return",     hl.dsp.exec_cmd("uwsm app -- " .. terminal))
-hl.bind(mainMod .. " + E",          hl.dsp.exec_cmd("uwsm app -- " .. fileManager))
-hl.bind(mainMod .. " + T",          hl.dsp.exec_cmd("uwsm app -- " .. editor))
-hl.bind(mainMod .. " + C",          hl.dsp.exec_cmd("uwsm app -- " .. calculator))
-hl.bind(mainMod .. " + W",          hl.dsp.exec_cmd("uwsm app -- " .. browser))
+hl.bind(mainMod .. " + Return",     hl.dsp.exec_cmd("uwsm app -- " .. TERMINAL))
+hl.bind(mainMod .. " + E",          hl.dsp.exec_cmd("uwsm app -- " .. FILE_MANAGER))
+hl.bind(mainMod .. " + T",          hl.dsp.exec_cmd("uwsm app -- " .. EDITOR))
+hl.bind(mainMod .. " + C",          hl.dsp.exec_cmd("uwsm app -- " .. CALCULATOR))
+hl.bind(mainMod .. " + W",          hl.dsp.exec_cmd("uwsm app -- " .. BROWSER))
 hl.bind("CONTROL + SHIFT + Escape", hl.dsp.exec_cmd("uwsm app -- btop"))
 hl.bind(mainMod .. " + Z",          hl.dsp.exec_cmd(noctCall .. "settings toggle"))
 hl.bind(mainMod .. " + X",          hl.dsp.exec_cmd(noctCall .. "controlCenter toggle"))
