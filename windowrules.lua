@@ -9,18 +9,19 @@ hl.window_rule({
 })
 
 -- Gaming
-hl.window_rule({ match = { content = 3 }, workspace = 2 })
+hl.window_rule({ match = { content = "game" }, workspace = 2 })
 hl.window_rule({ match = { class = "^(steam_app.*|gamescope)$" }, workspace = 2 })
-
+hl.window_rule({ match = { class = "^(steam)$", title = "^(Launching\\.{3})$" }, float = true, center = true, workspace = 2 })
+hl.window_rule({ match = { class = "^(steam)$", title = "^(Friends List)$" }, float = true })
 hl.window_rule({
     match = {
         class         = "^(steam_app.*|gamescope)$",
         title         = "^(.+)$",
         initial_title = "negative:^(.*\\\\home\\\\.*)$",
     },
-    size       = "monitor_w monitor_h",
-    fullscreen = true,
-    content    = "game",
+    size             = "monitor_w monitor_h",
+    fullscreen_state = 2,
+    content          = "game",
 })
 hl.window_rule({
     match = {
@@ -32,7 +33,9 @@ hl.window_rule({
     fullscreen       = false,
     fullscreen_state = 0,
 })
-hl.window_rule({ match = { class = "^(steam)$", title = "^(Friends List)$" }, float = true })
+
+-- Video
+hl.window_rule({ match = { content = "video", fullscreen = true }, no_vrr = true })
 
 -- Apps
 hl.window_rule({ match = { class = "^(.*\\.exe)$", float = true }, workspace = 2, center = true, fullscreen_state = 0 })
@@ -49,7 +52,14 @@ hl.window_rule({
         title = "negative:^(Moving.*|Create New.*|Extract.*|Compress.*|Copying.*|Progress.*|Configure.*|Properties.*|Choose\\sApplication.*)$",
     },
     float = true,
-    move  = "(cursor_x-(window_w*0.5)) (cursor_y-(window_h*0.05))",
+    move = {
+        "max(20, min(cursor_x - 650, monitor_w - 1320))", -- X axis clamping
+        "max(20, min(cursor_y - 50, monitor_h - 820))"   -- Y axis clamping
+    },
+    -- move = {
+    --     "max(20, min(cursor_x - (window_w/2), monitor_w - window_w + 20))", -- X axis clamping
+    --     "max(20, min(cursor_y - 50, monitor_h - window_h + 20))"   -- Y axis clamping
+    -- },
     size = "1300 800",
 })
 
@@ -66,8 +76,6 @@ local floatApps = {
     { title = "^(Winetricks.*|Protontricks.*)$" },
 }
 for _, m in ipairs(floatApps) do hl.window_rule({ match = m, float = true }) end
-
--- hl.window_rule({ match = { float = true }, move = "50% 50%" })
 
 -- Float Common Modals
 local modalMatches = {

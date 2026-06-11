@@ -21,7 +21,7 @@ hl.config({
         middle_click_paste = false,
         enable_swallow = true,
         swallow_regex = "(kitty)",
-        vrr = 3,
+        swallow_exception_regex = "^(wev)$",
         -- new_window_takes_over_fullscreen = 2,
     },
     xwayland = {
@@ -29,6 +29,7 @@ hl.config({
     },
     render = {
         -- direct_scanout = true,
+        cm_auto_hdr = 2
     },
     
     -- Ecosystem

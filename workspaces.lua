@@ -9,5 +9,7 @@ hl.workspace_rule({
     gaps_out = {
         top = 200,
         bottom = 882,
+        left = 8,
+        right = 8,
     }
 })

@@ -42,7 +42,7 @@ hl.bind(mainMod .. " + E",          hl.dsp.exec_cmd("uwsm app -- " .. FILE_MANAG
 hl.bind(mainMod .. " + T",          hl.dsp.exec_cmd("uwsm app -- " .. EDITOR))
 hl.bind(mainMod .. " + C",          hl.dsp.exec_cmd("uwsm app -- " .. CALCULATOR))
 hl.bind(mainMod .. " + W",          hl.dsp.exec_cmd("uwsm app -- " .. BROWSER))
-hl.bind("CONTROL + SHIFT + Escape", hl.dsp.exec_cmd("uwsm app -- btop"))
+hl.bind("CONTROL + SHIFT + Escape", hl.dsp.exec_cmd("uwsm app -T -- btop"))
 hl.bind(mainMod .. " + Z",          hl.dsp.exec_cmd(noctCall .. "settings toggle"))
 hl.bind(mainMod .. " + X",          hl.dsp.exec_cmd(noctCall .. "controlCenter toggle"))
 hl.bind(mainMod .. " + Space",      hl.dsp.exec_cmd(noctCall .. "launcher toggle"))
@@ -69,7 +69,7 @@ hl.bind("XF86AudioPrev",  hl.dsp.exec_cmd(noctCall .. "media previous"),  { lock
 -------------------
 
 -- Reset Display
-hl.bind(mainMod .. " + M", hl.dsp.exec_cmd("hyprctl dispatch 'hl.monitor({ output = \"DP-1\", mode = \"2560x1440@360\", position = \"2560x0\", scale = \"1\", bitdepth = 8 })' && hyprctl reload"))
+hl.bind(mainMod .. " + M", hl.dsp.exec_cmd("hyprctl dispatch 'hl.monitor({ output = \"DP-1\", mode = \"2560x1440@360\", position = \"0x0\", scale = \"1\", bitdepth = 8 })' && hyprctl reload"))
 
 -- Screen Capture
 hl.bind(mainMod .. " + P",     hl.dsp.exec_cmd(noctCall .. "plugin:screen-toolkit colorPicker"))
