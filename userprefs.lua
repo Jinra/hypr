@@ -22,6 +22,8 @@ hl.config({
         enable_swallow = true,
         swallow_regex = "(kitty)",
         swallow_exception_regex = "^(wev)$",
+        disable_splash_rendering = true,
+        disable_hyprland_logo = true,
         -- new_window_takes_over_fullscreen = 2,
     },
     xwayland = {

@@ -67,6 +67,7 @@ hl.window_rule({
 hl.window_rule({ match = { class = "^(firefox|zen)$" }, opacity = "1.0 override" })
 hl.window_rule({ match = { class = "^(kitty)$" }, opacity = "1.0 override 0.90 override" })
 hl.window_rule({ match = { class = "^(mpv|org.kde.haruna|.*plex.*|org\\.kde\\.gwenview)$" }, opacity = "1.0 override" })
+hl.window_rule({ match = { class = "^(virt-manager)$" }, opacity = "1.0 override" })
 
 -- Float Utility Windows
 local floatApps = {
