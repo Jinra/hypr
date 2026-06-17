@@ -39,8 +39,8 @@ hl.window_rule({ match = { content = "video", fullscreen = true }, no_vrr = true
 
 -- Apps
 hl.window_rule({ match = { class = "^(.*\\.exe)$", float = true }, workspace = 2, center = true, fullscreen_state = 0 })
-hl.window_rule({ match = { class = "^(Bitwarden)$" }, size = "900 700", workspace = 2, float = true })
-hl.window_rule({ match = { class = "^(vesktop)$" }, workspace = 3 })
+hl.window_rule({ match = { class = "^(Bitwarden)$" }, size = "900 700", workspace = "2 silent", float = true })
+hl.window_rule({ match = { class = "^(vesktop)$" }, workspace = "3 silent" })
 hl.window_rule({ match = { class = "^(Vtk)$" }, center = true })
 hl.window_rule({ match = { class = "^(org.gnome.Calculator)$" }, float = true, size = "380 616" })
 hl.window_rule({ match = { class = "^(org.kde.keditfiletype)$" }, float = true })
@@ -54,7 +54,7 @@ hl.window_rule({
     float = true,
     move = {
         "max(20, min(cursor_x - 650, monitor_w - 1320))", -- X axis clamping
-        "max(20, min(cursor_y - 50, monitor_h - 820))"   -- Y axis clamping
+        "max(20, min(cursor_y - 50, monitor_h - 820))",   -- Y axis clamping
     },
     -- move = {
     --     "max(20, min(cursor_x - (window_w/2), monitor_w - window_w + 20))", -- X axis clamping

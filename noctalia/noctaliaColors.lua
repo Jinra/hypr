@@ -1,8 +1,8 @@
-local primary = "rgb(fab1d6)"
-local surface = "rgb(171214)"
-local secondary = "rgb(e1bdcd)"
+local primary = "rgb(ffb4aa)"
+local surface = "rgb(200e0c)"
+local secondary = "rgb(ffb4aa)"
 local error = "rgb(ffb4ab)"
-local tertiary = "rgb(ffb59f)"
+local tertiary = "rgb(ffb866)"
 
 hl.config({
     general = {
