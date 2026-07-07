@@ -55,6 +55,11 @@ hl.config({
         },
     },
 
+    -- Animations
+    animations = {
+        workspace_wraparound = true,
+    },
+
     -- Layouts
     -- See https://wiki.hypr.land/Configuring/Layouts/Dwindle-Layout/ for more
     dwindle = {

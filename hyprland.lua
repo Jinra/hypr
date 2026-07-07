@@ -1,6 +1,6 @@
 require("autostart")
 require("animations")
-require("globals")
+require("variables")
 require("keybindings")
 require("monitors")
 require("noctalia.noctaliaColors")
