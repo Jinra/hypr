@@ -1,6 +1,6 @@
 hl.monitor({
     output   = MONITOR1,
-    mode     = "2560x1440@60",
+    mode     = "2560x1440@59.95",
     position = "-2560x0",
     scale    = "1",
     bitdepth = 10,
@@ -17,7 +17,7 @@ hl.monitor({
 
 hl.monitor({
     output    = MONITOR3,
-    mode      = "2560x1440@60",
+    mode      = "2560x1440@59.95",
     position  = "2560x-250",
     scale     = "1",
     transform = 3,

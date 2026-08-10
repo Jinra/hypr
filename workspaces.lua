@@ -5,6 +5,7 @@ hl.workspace_rule({ workspace = "4", monitor = MONITOR2, default = true, persist
 hl.workspace_rule({ workspace = "5", monitor = MONITOR2, default = true, persistent = true })
 hl.workspace_rule({ workspace = "6", monitor = MONITOR2, default = true, persistent = true })
 hl.workspace_rule({ workspace = "7", monitor = MONITOR3, default = true, persistent = true })
+-- hl.workspace_rule({ workspace = "7", monitor = MONITOR3, default = true, persistent = true, layout = "scrolling", layout_opts = { direction = "down" } })
 hl.workspace_rule({ workspace = "8", monitor = MONITOR3, default = true, persistent = true })
 hl.workspace_rule({ workspace = "9", monitor = MONITOR3, default = true, persistent = true })
 

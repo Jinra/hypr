@@ -1,8 +1,9 @@
 hl.config({
     general = {
+        allow_tearing = true,
         gaps_in = 3,
         gaps_out = 8,
-        border_size = 2,
+        border_size = 3,
         extend_border_grab_area = 10,
         resize_on_border = true,
     },
@@ -14,6 +15,7 @@ hl.config({
     },
     cursor = {
         no_hardware_cursors = 1,
+        -- use_cpu_buffer = 1,
     },
     
     -- Misc
@@ -21,17 +23,24 @@ hl.config({
         middle_click_paste = false,
         enable_swallow = true,
         swallow_regex = "(kitty)",
-        swallow_exception_regex = "^(wev)$",
+        swallow_exception_regex = "wev",
         disable_splash_rendering = true,
         disable_hyprland_logo = true,
+        vrr = 3,
         -- new_window_takes_over_fullscreen = 2,
     },
     xwayland = {
         force_zero_scaling = true
     },
     render = {
-        -- direct_scanout = true,
-        cm_auto_hdr = 2
+        direct_scanout = 2,
+        -- cm_auto_hdr = 2,
+        -- new_render_scheduling = true,
+        -- cm_sdr_eotf = "default",
+    },
+    quirks = {
+        -- prefer_hdr = 1,
+        -- skip_non_kms_dmabuf_formats = true
     },
     
     -- Ecosystem
@@ -49,16 +58,19 @@ hl.config({
         inactive_opacity = 0.85,
         fullscreen_opacity = 1,
         blur = {
-            size = 5,
+            size = 4,
             passes = 4,
             special = true,
         },
+        -- motion_blur = {
+        --     enabled = true
+        -- },
     },
 
     -- Animations
-    animations = {
-        workspace_wraparound = true,
-    },
+    -- animations = {
+    --     workspace_wraparound = true,
+    -- },
 
     -- Layouts
     -- See https://wiki.hypr.land/Configuring/Layouts/Dwindle-Layout/ for more
@@ -72,6 +84,7 @@ hl.config({
     -- See https://wiki.hypr.land/Configuring/Layouts/Scrolling-Layout/ for more
     scrolling = {
         fullscreen_on_one_column = true,
+        -- follow_focus = false,
         follow_min_visible = 0.10,
         focus_fit_method = 1,
         column_width = 0.7,

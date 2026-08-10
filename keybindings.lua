@@ -6,12 +6,12 @@ local noctCall = "noctalia msg "
 ---------------------------
 
 -- Window manipulation
-hl.bind(mainMod .. " + Escape",      hl.dsp.exec_cmd("hyprctl kill"))
+hl.bind(mainMod .. " + Escape",      hl.dsp.exec_cmd("hyprctl kill"), { description = "kill" })
 hl.bind(mainMod .. " + Q",           hl.dsp.window.close())
 hl.bind(mainMod .. " + ALT + Space", hl.dsp.window.float({ action = "toggle" }))
 hl.bind(mainMod .. " + D",           hl.dsp.window.fullscreen({ mode = 1 }))
 hl.bind(mainMod .. " + F",           hl.dsp.window.fullscreen())
-hl.bind(mainMod .. " + J",           hl.dsp.layout("togglesplit"))
+-- hl.bind(mainMod .. " + J",           hl.dsp.window.resize({ x = 100, y = 100 }))
 
 -- Change focus
 hl.bind(mainMod .. " + Left",  hl.dsp.focus({ direction = "left" }))
@@ -19,21 +19,24 @@ hl.bind(mainMod .. " + Right", hl.dsp.focus({ direction = "right" }))
 hl.bind(mainMod .. " + Up",    hl.dsp.focus({ direction = "up" }))
 hl.bind(mainMod .. " + Down",  hl.dsp.focus({ direction = "down" }))
 hl.bind("ALT + Tab",           hl.dsp.window.cycle_next())
+hl.bind(mainMod .. " + Tab",   hl.dsp.exec_cmd(noctCall .. "window-switcher"))
 
 -- Move active window around workspaces & monitors
-hl.bind(mainMod .. " + SHIFT + Right",           hl.dsp.window.move({ direction = "r" }))
-hl.bind(mainMod .. " + SHIFT + Left",            hl.dsp.window.move({ direction = "l" }))
--- hl.bind(mainMod .. " + SHIFT + Right",           hl.dsp.layout("swapcol r || move r"))
--- hl.bind(mainMod .. " + SHIFT + Left",           hl.dsp.layout("swapcol l || move l"))
-hl.bind(mainMod .. " + SHIFT + Up",              hl.dsp.window.move({ direction = "u" }))
-hl.bind(mainMod .. " + SHIFT + Down",            hl.dsp.window.move({ direction = "d" }))
-hl.bind(mainMod .. " + SHIFT + 1",               hl.dsp.window.move({ monitor = MONITOR1 }))
-hl.bind(mainMod .. " + SHIFT + 2",               hl.dsp.window.move({ monitor = MONITOR2 }))
-hl.bind(mainMod .. " + SHIFT + 3",               hl.dsp.window.move({ monitor = MONITOR3 }))
-hl.bind(mainMod .. " + SHIFT + mouse_up",        hl.dsp.window.move({ monitor   = "+1" }))
-hl.bind(mainMod .. " + SHIFT + mouse_down",      hl.dsp.window.move({ monitor   = "-1" }))
-hl.bind(mainMod .. " + CONTROL + SHIFT + Right", hl.dsp.window.move({ workspace = "r+1" }))
-hl.bind(mainMod .. " + CONTROL + SHIFT + Left",  hl.dsp.window.move({ workspace = "r-1" }))
+hl.bind(mainMod .. " + SHIFT + Right",                hl.dsp.window.move({ direction = "r" }))
+hl.bind(mainMod .. " + SHIFT + Left",                 hl.dsp.window.move({ direction = "l" }))
+-- hl.bind(mainMod .. " + SHIFT + Right",             hl.dsp.layout("swapcol r || move r"))
+-- hl.bind(mainMod .. " + SHIFT + Left",              hl.dsp.layout("swapcol l || move l"))
+hl.bind(mainMod .. " + SHIFT + Up",                   hl.dsp.window.move({ direction = "u" }))
+hl.bind(mainMod .. " + SHIFT + Down",                 hl.dsp.window.move({ direction = "d" }))
+hl.bind(mainMod .. " + SHIFT + 1",                    hl.dsp.window.move({ monitor = MONITOR1 }))
+hl.bind(mainMod .. " + SHIFT + 2",                    hl.dsp.window.move({ monitor = MONITOR2 }))
+hl.bind(mainMod .. " + SHIFT + 3",                    hl.dsp.window.move({ monitor = MONITOR3 }))
+hl.bind(mainMod .. " + SHIFT + mouse_up",             hl.dsp.window.move({ monitor   = "-1" }))
+hl.bind(mainMod .. " + SHIFT + mouse_down",           hl.dsp.window.move({ monitor   = "+1" }))
+hl.bind(mainMod .. " + CONTROL + SHIFT + Right",      hl.dsp.window.move({ workspace = "m+1" }))
+hl.bind(mainMod .. " + CONTROL + SHIFT + Left",       hl.dsp.window.move({ workspace = "m-1" }))
+hl.bind(mainMod .. " + CONTROL + SHIFT + mouse_up",   hl.dsp.window.move({ workspace = "m-1" }))
+hl.bind(mainMod .. " + CONTROL + SHIFT + mouse_down", hl.dsp.window.move({ workspace = "m+1" }))
 for i = 1, NUM_WPM do
     local key = i % 10
     hl.bind(mainMod .. " + SHIFT + CONTROL + " .. key, hl.dsp.window.move({ workspace = "m~" .. i }))
@@ -82,10 +85,13 @@ hl.bind("XF86AudioPrev",  hl.dsp.exec_cmd(noctCall .. "media previous"),  { lock
 -------------------
 
 -- Reset Display
-hl.bind(mainMod .. " + M", hl.dsp.exec_cmd("hyprctl dispatch 'hl.monitor({ output = \"DP-1\", mode = \"2560x1440@360\", position = \"0x0\", scale = \"1\", bitdepth = 8 })' && hyprctl reload"))
+hl.bind(mainMod .. " + M", hl.dsp.exec_cmd("hyprctl dispatch 'hl.monitor({ output = \"DP-2\", disabled=true})'; sleep 2 && hyprctl reload"))
+
+-- Home Assistant
+hl.bind(mainMod .. " + H", hl.dsp.exec_cmd(noctCall .. "panel-toggle pozzoo/hassio:entity_manager"))
 
 -- Screen Capture
-hl.bind(mainMod .. " + P",     hl.dsp.exec_cmd("notify-send $(hyprpicker -a)"))
+hl.bind(mainMod .. " + P",     hl.dsp.exec_cmd("hyprpicker -a -n"))
 hl.bind("Print",               hl.dsp.exec_cmd(noctCall .. "screenshot-region"))
 hl.bind(mainMod .. " + Print", hl.dsp.exec_cmd(noctCall .. "screenshot-fullscreen"))
 hl.bind(mainMod .. " + R",     hl.dsp.exec_cmd(noctCall.. "plugin noctalia/screen_recorder:service all toggle"))
@@ -128,11 +134,15 @@ hl.bind(mainMod .. " + CONTROL + Left",        hl.dsp.focus({ workspace = "m-1" 
 hl.bind(mainMod .. " + CONTROL + Down",        hl.dsp.focus({ workspace = "emptym" }))
 
 -- Scroll through existing workspaces & monitors
-hl.bind(mainMod .. " + mouse_up",             hl.dsp.focus({ monitor = "+1" }))
-hl.bind(mainMod .. " + mouse_down",           hl.dsp.focus({ monitor = "-1" }))
-hl.bind(mainMod .. " + CONTROL + mouse_up",   hl.dsp.focus({ workspace = "m+1" }))
-hl.bind(mainMod .. " + CONTROL + mouse_down", hl.dsp.focus({ workspace = "m-1" }))
+hl.bind(mainMod .. " + mouse_up",             hl.dsp.focus({ monitor = "-1" }))
+hl.bind(mainMod .. " + mouse_down",           hl.dsp.focus({ monitor = "+1" }))
+hl.bind(mainMod .. " + CONTROL + mouse_up",   hl.dsp.focus({ workspace = "m-1" }))
+hl.bind(mainMod .. " + CONTROL + mouse_down", hl.dsp.focus({ workspace = "m+1" }))
 
 -- Special workspace (scratchpad)
 hl.bind(mainMod .. " + SHIFT + S", hl.dsp.window.move({ workspace = "special" }))
 hl.bind(mainMod .. " + S",         hl.dsp.workspace.toggle_special())
+
+-- hl.bind(mainMod .. "+F9", hl.dsp.pass({ window = "class:^(com.obsproject.Studio)$"}))
+-- hl.bind(mainMod .. " + F10", hl.dsp.send_shortcut({ mods = mainMod, key = "F9", window = "class:^(com.obsproject.Studio)$"}))
+-- hl.bind(mainMod ..  " + Y", hl.dsp.send_shortcut({mods = "CTRL+SHIFT", key = "M", window = "class:^(vesktop)$"}))
