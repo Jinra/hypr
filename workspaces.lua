@@ -1,13 +1,14 @@
 hl.workspace_rule({ workspace = "1", monitor = MONITOR1, default = true, persistent = true })
-hl.workspace_rule({ workspace = "2", monitor = MONITOR1, default = true, persistent = true })
-hl.workspace_rule({ workspace = "3", monitor = MONITOR1, default = true, persistent = true })
+hl.workspace_rule({ workspace = "2", monitor = MONITOR1, persistent = true })
+hl.workspace_rule({ workspace = "3", monitor = MONITOR1, persistent = true })
 hl.workspace_rule({ workspace = "4", monitor = MONITOR2, default = true, persistent = true })
-hl.workspace_rule({ workspace = "5", monitor = MONITOR2, default = true, persistent = true })
-hl.workspace_rule({ workspace = "6", monitor = MONITOR2, default = true, persistent = true })
+hl.workspace_rule({ workspace = "5", monitor = MONITOR2, persistent = true })
+hl.workspace_rule({ workspace = "6", monitor = MONITOR2, persistent = true })
 hl.workspace_rule({ workspace = "7", monitor = MONITOR3, default = true, persistent = true })
--- hl.workspace_rule({ workspace = "7", monitor = MONITOR3, default = true, persistent = true, layout = "scrolling", layout_opts = { direction = "down" } })
-hl.workspace_rule({ workspace = "8", monitor = MONITOR3, default = true, persistent = true })
-hl.workspace_rule({ workspace = "9", monitor = MONITOR3, default = true, persistent = true })
+hl.workspace_rule({ workspace = "8", monitor = MONITOR3, persistent = true })
+hl.workspace_rule({ workspace = "9", monitor = MONITOR3, persistent = true })
+
+hl.workspace_rule({ workspace = "10", monitor = PRIMARY_MONITOR, default_name = "media" })
 
 -- sets single window on vertical monitor to a specific size/location
 hl.workspace_rule({

@@ -1,6 +1,6 @@
 hl.on("hyprland.start", function ()
     hl.exec_cmd("kwalletd6")
-    hl.exec_cmd("noctalia")
+    hl.exec_cmd("noctalia -d")
     hl.exec_cmd("wl-clip-persist --clipboard regular")
     hl.exec_cmd("xhost +SI:localuser:root")
 end)

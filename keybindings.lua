@@ -20,6 +20,7 @@ hl.bind(mainMod .. " + Up",    hl.dsp.focus({ direction = "up" }))
 hl.bind(mainMod .. " + Down",  hl.dsp.focus({ direction = "down" }))
 hl.bind("ALT + Tab",           hl.dsp.window.cycle_next())
 hl.bind(mainMod .. " + Tab",   hl.dsp.exec_cmd(noctCall .. "window-switcher"))
+-- hl.bind(mainMod .. " + Tab",   hl.dsp.layout("swapwithmaster master"))
 
 -- Move active window around workspaces & monitors
 hl.bind(mainMod .. " + SHIFT + Right",                hl.dsp.window.move({ direction = "r" }))
@@ -118,12 +119,12 @@ hl.bind(mainMod .. " + 3", hl.dsp.focus({ monitor = MONITOR3 }))
 
 -- Focus on workspace number
 -- Absolute
-for i = 1, NUM_WPM do
-    local key = i % NUM_WPM
-    hl.bind(mainMod .. " + TAB + " .. key, hl.dsp.focus({ workspace = i }))
-end
+-- for i = 1, 10 do
+--     local key = i % NUM_WPM
+--     hl.bind(mainMod .. " + ALT + " .. key, hl.dsp.focus({ workspace = i }))
+-- end
 -- Relative
-for i = 1, NUM_WPM do
+for i = 1, 10 do
     local key = i % 10
     hl.bind(mainMod .. " + CONTROL + " .. key, hl.dsp.focus({ workspace = "m~" .. i }))
 end
@@ -145,4 +146,5 @@ hl.bind(mainMod .. " + S",         hl.dsp.workspace.toggle_special())
 
 -- hl.bind(mainMod .. "+F9", hl.dsp.pass({ window = "class:^(com.obsproject.Studio)$"}))
 -- hl.bind(mainMod .. " + F10", hl.dsp.send_shortcut({ mods = mainMod, key = "F9", window = "class:^(com.obsproject.Studio)$"}))
--- hl.bind(mainMod ..  " + Y", hl.dsp.send_shortcut({mods = "CTRL+SHIFT", key = "M", window = "class:^(vesktop)$"}))
+-- hl.bind("mouse:276", hl.dsp.send_shortcut({mods = "ALT+CONTROL", key = "I", window = "class:^(vesktop)$"}))
+-- hl.bind(mainMod .. " + G", hl.dsp.group.toggle())

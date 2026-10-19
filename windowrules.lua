@@ -1,5 +1,5 @@
 -- Generic floating window size
-hl.window_rule({ match = { float = true }, center = true, persistent_size = true })
+hl.window_rule({ match = { float = true }, persistent_size = true })
 
 -- Picture-in-Picture
 hl.window_rule({
@@ -13,7 +13,7 @@ hl.window_rule({
 -- Gaming
 hl.window_rule({ match = { content = "game" }, monitor = PRIMARY_MONITOR })
 -- hl.window_rule({ match = { xdg_tag = "^(.*game.*)$" }, monitor = PRIMARY_MONITOR, fullscreen_state = 2, content = "game", sync_fullscreen = true })
-hl.window_rule({ match = { class = "^(steam)$", initial_title = "^(Launching\\.{3})$" }, float = true, center = true, monitor = PRIMARY_MONITOR })
+hl.window_rule({ match = { class = "^(steam)$", initial_title = "^(Launching\\.{3})$" }, float = true, no_initial_focus = true, center = true, monitor = PRIMARY_MONITOR })
 hl.window_rule({ match = { class = "^(steam)$", title = "^(Friends List)$" }, float = true })
 hl.window_rule({
     match            = {
@@ -29,7 +29,7 @@ hl.window_rule({
     monitor          = PRIMARY_MONITOR,
     size             = { "monitor_w", "monitor_h" },
     sync_fullscreen  = true,
-    -- immediate        = true,
+    immediate        = true,
 })
 hl.window_rule({
     match = {
@@ -42,6 +42,10 @@ hl.window_rule({
     fullscreen_state = 0,
     monitor          = PRIMARY_MONITOR,
 })
+
+-- Game Overrides (for direct scanout black screen issues)
+
+hl.window_rule({ match = { initial_title = "PEAK" }, content = "none" })
 
 -- Video
 hl.window_rule({ match = { content = "video", fullscreen = true }, no_vrr = true })
@@ -58,6 +62,7 @@ hl.window_rule({ match = { class = "^(.*satty.*)$", title = "^(Satty)$" }, min_s
 hl.window_rule({ match = { class = "^(.*swash)$", title = "Swash" }, min_size = { "max(monitor_w, monitor_h)*0.35", "min(monitor_w, monitor_h)*0.35" }, float = true })
 hl.window_rule({ match = { class = "^(org\\.kde\\.ark)$" }, float = true, size = { "max(monitor_w, monitor_h)*0.40", "min(monitor_w, monitor_h)*0.40" }})
 hl.window_rule({ match = { class = "^(dev\\.)?(noctalia\\.Noctalia(\\.Settings)?)$" }, float = true, size = { "(monitor_w*0.70)", "(monitor_h*0.70)" }})
+hl.window_rule({ match = { class = "^(com.interversehq.qView|mpv)$" }, workspace = "10"})
 hl.window_rule({
     match = {
         class = "^(org\\.kde\\.dolphin)$",
@@ -78,7 +83,7 @@ hl.window_rule({
 -- Opacity Overrides
 hl.window_rule({ match = { class = "^(firefox|zen|chromium)$" }, opacity = "1.0 override" })
 hl.window_rule({ match = { class = "^(kitty)$" }, opacity = "1.0 override 0.90 override" })
-hl.window_rule({ match = { class = "^(mpv|org.kde.haruna|.*plex.*|org\\.kde\\.gwenview)$" }, opacity = "1.0 override" })
+hl.window_rule({ match = { class = "^(mpv|org.kde.haruna|.*plex.*|com\\.interversehq\\.qView)$" }, opacity = "1.0 override" })
 hl.window_rule({ match = { class = "^(virt-manager)$" }, opacity = "1.0 override" })
 hl.window_rule({ match = { class = "^(org.gnome.Papers)$" }, opacity = "1.0 override" })
 
@@ -124,16 +129,20 @@ hl.window_rule({
     no_focus = true,
 })
 
+-- Cap windows to 4 per workspace
+-- hl.window_rule({ match = { float = false, fullscreen = false, workspace = "w[t4-99]" }, workspace = "emptym" })
+
 -- Layer Rules
 
--- hl.layer_rule({
---   name =         "noctalia",
---   match =        {
---     namespace = "^noctalia-(bar-.+|notification|dock|panel|attached-panel|osd)$",
---   },
---   no_anim =      true,
---   blur =         true,
---   blur_popups =  true,
---   ignore_alpha = 0.60,
---   xray =         true,
--- })
+hl.layer_rule({
+  name =         "noctalia",
+  match =        {
+    namespace = "^noctalia-(bar-.+|notification|dock|panel|attached-panel|osd)$",
+  },
+  no_anim =      true,
+  blur =         true,
+  blur_popups =  true,
+  ignore_alpha = 0.60,
+  xray =         true,
+})
+

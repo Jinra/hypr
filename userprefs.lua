@@ -1,6 +1,6 @@
 hl.config({
     general = {
-        allow_tearing = true,
+        -- allow_tearing = true,
         gaps_in = 3,
         gaps_out = 8,
         border_size = 3,
@@ -15,7 +15,7 @@ hl.config({
     },
     cursor = {
         no_hardware_cursors = 1,
-        -- use_cpu_buffer = 1,
+        use_cpu_buffer = 1,
     },
     
     -- Misc
@@ -34,6 +34,8 @@ hl.config({
     },
     render = {
         direct_scanout = 2,
+        -- non_shader_cm = 1,
+        -- non_shader_cm_interop = 1
         -- cm_auto_hdr = 2,
         -- new_render_scheduling = true,
         -- cm_sdr_eotf = "default",
@@ -82,13 +84,13 @@ hl.config({
         new_status = "slave",
     },
     -- See https://wiki.hypr.land/Configuring/Layouts/Scrolling-Layout/ for more
-    scrolling = {
-        fullscreen_on_one_column = true,
-        -- follow_focus = false,
-        follow_min_visible = 0.10,
-        focus_fit_method = 1,
-        column_width = 0.7,
-    },
+    -- scrolling = {
+    --     fullscreen_on_one_column = true,
+    --     -- follow_focus = false,
+    --     follow_min_visible = 0.10,
+    --     focus_fit_method = 1,
+    --     column_width = 0.7,
+    -- },
 })
 
 -- Video (runs on every config load)
