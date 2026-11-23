@@ -17,6 +17,17 @@ hl.config({
         no_hardware_cursors = 1,
         use_cpu_buffer = 1,
     },
+
+    -- experimental = {
+    --     wp_cm_1_2 = true,
+    -- },
+    
+    -- debug = {
+    --     ds_handle_same_buffer = false,
+    --     ds_handle_same_buffer_fifo = false,
+    --     full_cm_proto = true
+    --     render_solitary_wo_damage = true,
+    -- },
     
     -- Misc
     misc = {
@@ -34,15 +45,15 @@ hl.config({
     },
     render = {
         direct_scanout = 2,
-        -- non_shader_cm = 1,
-        -- non_shader_cm_interop = 1
+        -- non_shader_cm = 0,
+        -- non_shader_cm_interop = 0,
         -- cm_auto_hdr = 2,
         -- new_render_scheduling = true,
         -- cm_sdr_eotf = "default",
     },
     quirks = {
         -- prefer_hdr = 1,
-        -- skip_non_kms_dmabuf_formats = true
+        -- skip_non_kms_dmabuf_formats = true,
     },
     
     -- Ecosystem

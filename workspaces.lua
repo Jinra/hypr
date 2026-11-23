@@ -8,7 +8,7 @@ hl.workspace_rule({ workspace = "7", monitor = MONITOR3, default = true, persist
 hl.workspace_rule({ workspace = "8", monitor = MONITOR3, persistent = true })
 hl.workspace_rule({ workspace = "9", monitor = MONITOR3, persistent = true })
 
-hl.workspace_rule({ workspace = "10", monitor = PRIMARY_MONITOR, default_name = "media" })
+-- hl.workspace_rule({ workspace = "10", monitor = PRIMARY_MONITOR, default_name = "media" })
 
 -- sets single window on vertical monitor to a specific size/location
 hl.workspace_rule({

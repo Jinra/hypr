@@ -46,12 +46,13 @@ hl.window_rule({
 -- Game Overrides (for direct scanout black screen issues)
 
 hl.window_rule({ match = { initial_title = "PEAK" }, content = "none" })
+hl.window_rule({ match = { initial_title = "Deadlock" }, content = "video" })
 
 -- Video
-hl.window_rule({ match = { content = "video", fullscreen = true }, no_vrr = true })
+-- hl.window_rule({ match = { content = "video", fullscreen = true }, no_vrr = true })
 
 -- Apps
-hl.window_rule({ match = { class = "kitty", initial_title = "arch_update" }, float = true, size = { "1100", "800" }, move = { "monitor_w-1110", "46" }})
+hl.window_rule({ match = { class = "arch-updater" }, float = true, size = { "1200", "800" }, move = { "monitor_w-1210", "46" }})
 hl.window_rule({ match = { class = "^(.*\\.exe)$", float = true }, monitor = PRIMARY_MONITOR .. " silent", center = true, fullscreen_state = 0 })
 hl.window_rule({ match = { class = "^([Bb]itwarden)$" }, size = { "max(monitor_w, monitor_h)*0.50", "min(monitor_w, monitor_h)*0.55" }, float = true })
 hl.window_rule({ match = { class = "^(vesktop)$" }, monitor = MONITOR3 .. " silent" }) -- convert to monitor in > 0.55.4
@@ -62,7 +63,8 @@ hl.window_rule({ match = { class = "^(.*satty.*)$", title = "^(Satty)$" }, min_s
 hl.window_rule({ match = { class = "^(.*swash)$", title = "Swash" }, min_size = { "max(monitor_w, monitor_h)*0.35", "min(monitor_w, monitor_h)*0.35" }, float = true })
 hl.window_rule({ match = { class = "^(org\\.kde\\.ark)$" }, float = true, size = { "max(monitor_w, monitor_h)*0.40", "min(monitor_w, monitor_h)*0.40" }})
 hl.window_rule({ match = { class = "^(dev\\.)?(noctalia\\.Noctalia(\\.Settings)?)$" }, float = true, size = { "(monitor_w*0.70)", "(monitor_h*0.70)" }})
-hl.window_rule({ match = { class = "^(com.interversehq.qView|mpv)$" }, workspace = "10"})
+hl.window_rule({ match = { class = "^(com.interversehq.qView|mpv)$" }, workspace = "10", content = "photo" })
+hl.window_rule({ match = { class = "^(code-oss)$" }, no_auto_hdr = true })
 hl.window_rule({
     match = {
         class = "^(org\\.kde\\.dolphin)$",
@@ -130,7 +132,7 @@ hl.window_rule({
 })
 
 -- Cap windows to 4 per workspace
--- hl.window_rule({ match = { float = false, fullscreen = false, workspace = "w[t4-99]" }, workspace = "emptym" })
+hl.window_rule({ match = { float = false, fullscreen = false, workspace = "w[t4-99]" }, workspace = "emptym" })
 
 -- Layer Rules
 
@@ -143,6 +145,5 @@ hl.layer_rule({
   blur =         true,
   blur_popups =  true,
   ignore_alpha = 0.60,
-  xray =         true,
+--   xray =         true,
 })
-
